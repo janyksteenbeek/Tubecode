@@ -1,0 +1,20 @@
+{
+    "name": "pascal/youtube-api-helper",
+    "description": "A few Helpers to interact with the YouTube APIs",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Pascal Schwientek",
+            "email": "pascal@plsk.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "google/apiclient": "~1.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Pascal\\YouTubeApi": "src/"
+        }
+    }
+}
