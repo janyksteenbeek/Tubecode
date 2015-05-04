@@ -44,7 +44,7 @@ echo "<strong>Video Uploaded.</strong> ID = {$video_id} \n\r <br>";
 $asset_id = Pascal\YouTubeApiHelper::create_asset(
     $partner,
     $video['title'],
-    CONTENT_OWNER
+    new \Pascal\ContentOwner(CONTENT_OWNER)
 );
 
 echo "Created asset $asset_id\n\r <br>";
@@ -72,10 +72,18 @@ $claim_id = Pascal\YouTubeApiHelper::create_claim(
 
 echo "Created claim. ID = $claim_id \n\r <br>";
 
-if(Pascal\YouTubeApiHelper::set_match_policy($partner,$asset_id,$POLICY_ID,new \Pascal\ContentOwner(CONTENT_OWNER)) < 0) {
+if(Pascal\YouTubeApiHelper::set_match_policy(
+    $partner,$asset_id,
+    $POLICY_ID,
+    new \Pascal\ContentOwner(CONTENT_OWNER)) < 0) {
     echo "Error setting match policy \n\r <br>";
 } else {
-    Pascal\YouTubeApiHelper::create_reference_file($partner,$youtube,$claim_id,$video_id,new \Pascal\ContentOwner(CONTENT_OWNER));
+    Pascal\YouTubeApiHelper::create_reference_file(
+        $partner,
+        $youtube,
+        $claim_id,
+        $video_id,
+        new \Pascal\ContentOwner(CONTENT_OWNER));
     echo "Created Reference file \n\r <br>";
 }
 
