@@ -12,7 +12,7 @@ $youtube = new Google_Service_YouTube($client);
 
 $channelId = '';
 
-$videos = Pascal\YouTubeApiHelper::get_videos_from_channel($youtube, $channelId, new \Pascal\ContentOwner(CONTENT_OWNER));
+$videos = Pascal\YouTubeApiHelper::get_videos_from_channel($youtube, $channelId, new \Pascal\ContentOwner(CONTENT_OWNER), 'snippet');
 foreach($videos as $video) {
     echo "Video Id: ".$video['id']['videoId']." - Title ".$video['snippet']['title']."\n\r <br>";
 }

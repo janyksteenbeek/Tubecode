@@ -11,6 +11,6 @@ Pascal\YouTubeApiHelper::authorize_service_account($client,OAUTH2_SERVICE_ACCOUN
 $youtube = new Google_Service_YouTube($client);
 $partner = new Google_Service_YouTubePartner($client);
 
-foreach(Pascal\YouTubeApiHelper::list_channels($youtube, new \Pascal\ContentOwner(CONTENT_OWNER)) as $channel) {
+foreach(Pascal\YouTubeApiHelper::list_channels($youtube, new \Pascal\ContentOwner(CONTENT_OWNER), 'snippet') as $channel) {
     echo "Channel id ".$channel['id']." : ".$channel['snippet']['title']."\n\r <br>";
 }
