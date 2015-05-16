@@ -255,7 +255,7 @@ class YouTubeApiHelper {
         $youtube_partner->assetMatchPolicy->update($asset_id, $match_policy, $optParams);
     }
 
-    public static function list_channels($youtube, ContentOwner $content_owner)
+    public static function list_channels($youtube, ContentOwner $content_owner, $part = 'snippet')
     {
         $channels = [];
         $pageToken = '';
@@ -268,7 +268,7 @@ class YouTubeApiHelper {
                 'managedByMe'            => 'mine'
             ];
 
-            $channelListResponse = $youtube->channels->listChannels('snippet', $opt);
+            $channelListResponse = $youtube->channels->listChannels($part, $opt);
 
             array_push($channels, $channelListResponse['items']);
 
@@ -279,7 +279,7 @@ class YouTubeApiHelper {
 
     }
 
-    public static function get_videos_from_channel(Google_Service_YouTube $youtube_client, $channel, ContentOwner $content_owner)
+    public static function get_videos_from_channel(Google_Service_YouTube $youtube_client, $channel, ContentOwner $content_owner, $part = 'snippet')
     {
         $videos = [];
         $pageToken = '';
@@ -294,7 +294,7 @@ class YouTubeApiHelper {
 
         do
         {
-            $search_response = $youtube_client->search->listSearch('snippet', $params);
+            $search_response = $youtube_client->search->listSearch($part, $params);
 
             foreach($search_response['items'] as $video)
             {
