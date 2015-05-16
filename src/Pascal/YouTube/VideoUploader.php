@@ -11,10 +11,10 @@ use Pascal\Resources\UploadableFile;
 class VideoUploader {
 
     protected $tags = [];
-    protected $title;
-    protected $description;
-    protected $category;
-    protected $privacyStatus;
+    protected $title = "My Video uploaded via API";
+    protected $description = "This is my Video, I uploaded it via the Google API";
+    protected $category = 22;
+    protected $privacyStatus = "Public";
     protected $videoFile;
     protected $recipient = [];
 
