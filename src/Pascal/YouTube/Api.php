@@ -11,22 +11,22 @@ class Api {
     /**
      * @var Google_Client
      */
-    public $client;
+    private $client;
 
     /**
      * @var Google_Service_YouTube
      */
-    public $youtube;
+    private $youtube;
 
     /**
      * @var Google_Service_YouTubePartner
      */
-    public $partner;
+    private $partner;
 
     /**
      * @var ContentOwner
      */
-    public $contentOwner;
+    private $contentOwner;
 
     /**
      * Initial API Object
@@ -53,6 +53,38 @@ class Api {
     public function uploadVideo(UploadableFile $video)
     {
         return (new VideoUploader($this))->setVideo($video);
+    }
+
+    /**
+     * @return Google_Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @return Google_Service_YouTube
+     */
+    public function getYoutube()
+    {
+        return $this->youtube;
+    }
+
+    /**
+     * @return Google_Service_YouTubePartner
+     */
+    public function getPartner()
+    {
+        return $this->partner;
+    }
+
+    /**
+     * @return ContentOwner
+     */
+    public function getContentOwner()
+    {
+        return $this->contentOwner;
     }
 
 }

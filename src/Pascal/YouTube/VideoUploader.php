@@ -187,7 +187,7 @@ class VideoUploader {
 
         $response = [];
         $optParams = [
-            'onBehalfOfContentOwner' => $this->api->contentOwner->getId(),
+            'onBehalfOfContentOwner' => $this->api->getContentOwner()->getId(),
         ];
 
         foreach($this->recipient as $channel)
@@ -199,11 +199,11 @@ class VideoUploader {
                 $this->createVideoStatus()
             );
 
-            $this->api->client->setDefer(true);
+            $this->api->getClient()->setDefer(true);
 
             $status = $this->execute($video, $optParams);
 
-            $this->api->client->setDefer(false);
+            $this->api->getClient()->setDefer(false);
 
             //TODO: return Video Resource
             $response[] = $status['id'];
@@ -271,8 +271,8 @@ class VideoUploader {
     private function execute($video, $optParams)
     {
         $media = new Google_Http_MediaFileUpload(
-            $this->api->client,
-            $this->api->youtube->videos->insert("status,snippet", $video, $optParams),
+            $this->api->getClient(),
+            $this->api->getYoutube()->videos->insert("status,snippet", $video, $optParams),
             'video/*',
             null,
             true,
