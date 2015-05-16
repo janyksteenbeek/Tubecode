@@ -279,10 +279,10 @@ class VideoUploader {
             $this->chunkSizeBytes
         );
 
-        $media->setFileSize(filesize($this->videoFile->getPath()));
+        $media->setFileSize($this->videoFile->getSize());
 
         $status = false;
-        $handle = fopen($this->videoFile, "rb");
+        $handle = fopen($this->videoFile->getPath(), "rb");
         while( ! $status && ! feof($handle))
         {
             $chunk = fread($handle, $this->chunkSizeBytes);
