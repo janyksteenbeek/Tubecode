@@ -1,6 +1,6 @@
 <?php namespace Pascal\Resources;
 
 
-class Video {
+class Claim {
     
 }

@@ -1,4 +1,4 @@
-<?php namespace Pascal;
+<?php namespace Pascal\Resources;
 
 
 class ContentOwner {

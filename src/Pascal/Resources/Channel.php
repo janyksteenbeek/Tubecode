@@ -1,6 +1,8 @@
 <?php namespace Pascal\Resources;
 
 
-class Video {
+use Pascal\YouTube\Factory;
+
+class Channel {
 
 }
