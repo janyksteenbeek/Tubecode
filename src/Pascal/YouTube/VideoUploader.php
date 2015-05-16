@@ -14,7 +14,7 @@ class VideoUploader {
     protected $title = "My Video uploaded via API";
     protected $description = "This is my Video, I uploaded it via the Google API";
     protected $category = 22;
-    protected $privacyStatus = "Public";
+    protected $privacyStatus = "public";
     protected $videoFile;
     protected $recipient = [];
 
@@ -76,7 +76,7 @@ class VideoUploader {
         {
             foreach($tag as $t)
             {
-                $this->addTag($t);
+                $this->setTag($t);
             }
         }
 
