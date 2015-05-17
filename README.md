@@ -11,9 +11,6 @@ A simple abstraction for the youtube api - providing a fluent api that is powerf
 [![License](https://img.shields.io/badge/license-Apache_2.0-lightgrey.svg?style=flat-square)](#)
 
 
-
-
-
 ## Contributing
 
 To encourage active collaboration, we strongly encourages pull requests, not just bug reports. "Bug reports" may also be sent in the form of a pull request containing a failing unit test.
