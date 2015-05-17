@@ -48,7 +48,7 @@ If you discover a security vulnerability within this API Client, please send an 
 require the php package in the desired version via compoers
 
 ```
-php composer.phar require pascal/TubeCode
+php composer.phar require pascal/Tubecode
 ```
 
 
@@ -57,7 +57,7 @@ php composer.phar require pascal/TubeCode
 To initialize the API client call the create method on the factory.
 
 ```php
-use TubeCode\YouTube\Factory;
+use Tubecode\YouTube\Factory;
 
 $api = new Factory::create($content_owner, $service_account_name, $key_file);
 
@@ -65,7 +65,7 @@ $api = new Factory::create($content_owner, $service_account_name, $key_file);
 
 ### Upload a Video
 
-To Upload a video you call the ```uploadVideo($file)``` method on the Api class. The file must be an instace of ```TubeCode\Resources\UploadableFile```.
+To Upload a video you call the ```uploadVideo($file)``` method on the Api class. The file must be an instace of ```Tubecode\Resources\UploadableFile```.
 
 ```php
 $file = new UploadableFile($pathToFile);
@@ -78,7 +78,7 @@ You can add a configuration for the uploader.
 
 ```php
 $file = new UploadableFile($pathToFile);
-$config = new TubeCode\Resources\Config\VideoUploadConfig(['chunkSizeBytes' => 1 * 1028 * 1028])
+$config = new Tubecode\Resources\Config\VideoUploadConfig(['chunkSizeBytes' => 1 * 1028 * 1028])
 
 $upload = $api->uploadVideo($file, $config);
 
@@ -125,7 +125,7 @@ Before you can upload the video you need to specefie the channels the videos sho
 **NOTE: The channel must be part of the Content Owner you initialized the API client with.**
 
 ```php
-$channel =  new TubeCode\Resources\Channel('CHANNEL_ID');
+$channel =  new Tubecode\Resources\Channel('CHANNEL_ID');
 
 $upload->to($channel);
 ```
@@ -134,11 +134,11 @@ or to many channels
 
 ```php
 $channels = [
-    new TubeCode\Resources\Channel('CHANNEL_ID_1');
-    new TubeCode\Resources\Channel('CHANNEL_ID_2');
-    new TubeCode\Resources\Channel('CHANNEL_ID_3');
-    new TubeCode\Resources\Channel('CHANNEL_ID_4');
-    new TubeCode\Resources\Channel('CHANNEL_ID_5');
+    new Tubecode\Resources\Channel('CHANNEL_ID_1');
+    new Tubecode\Resources\Channel('CHANNEL_ID_2');
+    new Tubecode\Resources\Channel('CHANNEL_ID_3');
+    new Tubecode\Resources\Channel('CHANNEL_ID_4');
+    new Tubecode\Resources\Channel('CHANNEL_ID_5');
 ];
 
 $upload->to($channels);
