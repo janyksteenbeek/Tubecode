@@ -45,10 +45,10 @@ If you discover a security vulnerability within this API Client, please send an 
 
 ### Installation
 
-require the php package in the desired version via compoers
+require the php package in the desired version via composer
 
 ```
-php composer.phar require pascal/Tubecode
+php composer.phar require pascal/tubecode
 ```
 
 
@@ -160,11 +160,10 @@ $videoIds = $upload->start();
 - init client with custom config
 - API for 
 	- assets
-		- referenc file upload
+		- reference file upload
 	- claims
 	- channels
 	- videos
 	- content owners
-- improve documentation
 - upload video with watermark or other overlays
 - set thumbnail of video
