@@ -114,7 +114,7 @@ class VideoUploader {
      *
      * @param mixed $category
      */
-    public function setCategory($category)
+    public function category($category)
     {
         $this->category = $category;
 
@@ -126,30 +126,30 @@ class VideoUploader {
      *
      * @param mixed $privacyStatus
      */
-    public function setPrivacyStatus($privacyStatus)
+    public function publicVideo()
     {
-        $this->privacyStatus = $privacyStatus;
+        $this->privacyStatus = "public";
 
         return $this;
     }
 
-    /**
-     * Set the meta options for a Video
-     *
-     * @param array $options
-     */
-    public function meta(array $options)
+
+    public function privateVideo()
     {
-        foreach($options as $key => $option)
-        {
-            if(property_exists($this, $key))
-            {
-                $this->set{ucfirst($key)} = $option;
-            }
-        }
+        $this->privacyStatus = "private";
 
         return $this;
     }
+
+
+    public function unlistedVideo()
+    {
+        $this->privacyStatus = "unlisted";
+
+        return $this;
+    }
+
+
 
     /**
      * Upload the video to this Channel

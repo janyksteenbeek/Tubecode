@@ -86,17 +86,13 @@ public function setTitle($title) //string
 
 public function setDescription($description) //string
 
-public function setCategory($category)  //int
-
 public function category($category)  //int
 
-public function setPrivacyStatus($privacyStatus)  //string
+public function publicVideo()
 
-public function public()
+public function privateVideo()
 
-public function private()
-
-public function unlisted()
+public function unlistedVideo()
 ```
 
 Before you can upload the video you need to specefie the channels the videos should be uploaded to.
