@@ -164,6 +164,8 @@ class VideoUploader {
             {
                 $this->to($c);
             }
+
+            return $this;
         }
 
         if($channel instanceof Channel)
