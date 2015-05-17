@@ -74,6 +74,22 @@ $upload = $api->uploadVideo($file);
 
 ```
 
+You can add a configuration for the uploader.
+
+```php
+$file = new UploadableFile($pathToFile);
+$config = new Pascal\Resourcs\Config\VideoUploadConfig(['chunkSizeBytes' => 1 * 1028 * 1028])
+
+$upload = $api->uploadVideo($file, $config);
+
+```
+available options:
+
+```js
+chunkSizeBytes: (int) ## size of the chucks to upload the video
+```
+
+
 Now you have to configure the video.
 
 ```php

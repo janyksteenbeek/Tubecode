@@ -6,6 +6,7 @@ use Google_Service_YouTube_VideoSnippet;
 use Google_Service_YouTube_VideoStatus;
 use Pascal\Exceptions\InvalidChannelException;
 use Pascal\Resources\Channel;
+use Pascal\Resources\Config;
 use Pascal\Resources\UploadableFile;
 
 class VideoUploader {
@@ -49,8 +50,27 @@ class VideoUploader {
      */
     public function setVideo(UploadableFile $videoFile)
     {
-        //TODO: Validation
         $this->videoFile = $videoFile;
+
+        return $this;
+    }
+
+    /**
+     * Set initial configuration for the Uploader Class
+     *
+     * @param Config $config
+     *
+     * @return $this
+     */
+    public function setConfig(Config $config = null)
+    {
+        if(is_null($config)) {
+            return $this;
+        }
+
+        if(!is_null($csb = $config->getChuckSizeBytes())) {
+            $this->chunkSizeBytes = $csb;
+        }
 
         return $this;
     }

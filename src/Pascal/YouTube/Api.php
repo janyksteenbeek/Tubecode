@@ -3,6 +3,7 @@
 use Google_Client;
 use Google_Service_YouTube;
 use Google_Service_YouTubePartner;
+use Pascal\Resources\Config;
 use Pascal\Resources\ContentOwner;
 use Pascal\Resources\UploadableFile;
 
@@ -50,9 +51,9 @@ class Api {
 
 
 
-    public function uploadVideo(UploadableFile $video)
+    public function uploadVideo(UploadableFile $video, Config $config = null)
     {
-        return (new VideoUploader($this))->setVideo($video);
+        return (new VideoUploader($this))->setVideo($video)->setConfig($config);
     }
 
     /**
