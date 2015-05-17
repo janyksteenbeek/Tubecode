@@ -10,6 +10,10 @@ A simple abstraction for the youtube api - providing a fluent api that is powerf
 [![Latest Unstable Version](https://img.shields.io/badge/unstable-v2.0--dev-orange.svg?style=flat-square)](#)
 [![License](https://img.shields.io/badge/license-Apache_2.0-lightgrey.svg?style=flat-square)](#)
 
+
+
+
+
 ## Contributing
 
 To encourage active collaboration, we strongly encourages pull requests, not just bug reports. "Bug reports" may also be sent in the form of a pull request containing a failing unit test.
@@ -41,6 +45,14 @@ If you discover a security vulnerability within this API Client, please send an 
 
 
 ## Docs
+
+### Installation
+
+require the php package in the desired version via compoers
+
+```
+php composer.phar require pascal/youtube-api-helper
+```
 
 
 ### Initialize
@@ -127,3 +139,19 @@ As soon the Video is configured you can start uploading it. This will return an 
 $videoIds = $upload->start();
 
 ```
+
+## TODO for v2 stable release
+- Unit Tests
+- validate video
+- validate video configuration input
+- init client with custom config
+- API for 
+	- assets
+		- referenc file upload
+	- claims
+	- channels
+	- videos
+	- content owners
+- improve documentation
+- upload video with watermark or other overlays
+- set thumbnail of video
