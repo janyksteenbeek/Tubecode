@@ -1,4 +1,4 @@
-# YouTube API Helper functions
+# TUBECODE - YouTube API Client
 
 
 A simple abstraction for the youtube api - providing a fluent api that is powerful and easy to use.
@@ -13,7 +13,7 @@ A simple abstraction for the youtube api - providing a fluent api that is powerf
 
 ## Contributing
 
-To encourage active collaboration, we strongly encourages pull requests, not just bug reports. "Bug reports" may also be sent in the form of a pull request containing a failing unit test.
+To encourage active collaboration, TubeCode strongly encourages pull requests, not just bug reports. "Bug reports" may also be sent in the form of a pull request containing a failing unit test.
 
 However, if you file a bug report, your issue should contain a title and a clear description of the issue. You should also include as much relevant information as possible and a code sample that demonstrates the issue. The goal of a bug report is to make it easy for yourself - and others - to replicate the bug and develop a fix.
 
@@ -29,7 +29,7 @@ Remember, bug reports are created in the hope that others with the same problem 
 
 ### Coding Style
 
-The API Class follows the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) and [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) coding standards. In addition to these standards, the following coding standards should be followed:
+TubeCode follows the [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md) and [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) coding standards. In addition to these standards, the following coding standards should be followed:
 
 - The class namespace declaration must be on the same line as `<?php`.
 - A class' opening `{` must be on the same line as the class name.
@@ -48,7 +48,7 @@ If you discover a security vulnerability within this API Client, please send an 
 require the php package in the desired version via compoers
 
 ```
-php composer.phar require pascal/youtube-api-helper
+php composer.phar require pascal/TubeCode
 ```
 
 
@@ -57,7 +57,7 @@ php composer.phar require pascal/youtube-api-helper
 To initialize the API client call the create method on the factory.
 
 ```php
-use Pascal\YouTube\Factory;
+use TubeCode\YouTube\Factory;
 
 $api = new Factory::create($content_owner, $service_account_name, $key_file);
 
@@ -65,7 +65,7 @@ $api = new Factory::create($content_owner, $service_account_name, $key_file);
 
 ### Upload a Video
 
-To Upload a video you call the ```uploadVideo($file)``` method on the Api class. The file must be an instace of ```Pascal\Resources\UploadableFile```.
+To Upload a video you call the ```uploadVideo($file)``` method on the Api class. The file must be an instace of ```TubeCode\Resources\UploadableFile```.
 
 ```php
 $file = new UploadableFile($pathToFile);
@@ -78,15 +78,15 @@ You can add a configuration for the uploader.
 
 ```php
 $file = new UploadableFile($pathToFile);
-$config = new Pascal\Resourcs\Config\VideoUploadConfig(['chunkSizeBytes' => 1 * 1028 * 1028])
+$config = new TubeCode\Resources\Config\VideoUploadConfig(['chunkSizeBytes' => 1 * 1028 * 1028])
 
 $upload = $api->uploadVideo($file, $config);
 
 ```
-available options:
+Available options:
 
 ```js
-chunkSizeBytes: (int) ## size of the chucks to upload the video
+chunkSizeBytes: (int) ## size of the chunks to upload the video
 ```
 
 
@@ -100,7 +100,7 @@ $upload->setTitle("My awesome video")
        ->...
 ```
 
-Avalible methods
+Available methods
 
 ```php
 public function addTag($tag) //string or array
@@ -125,7 +125,7 @@ Before you can upload the video you need to specefie the channels the videos sho
 **NOTE: The channel must be part of the Content Owner you initialized the API client with.**
 
 ```php
-$channel =  new Pascal\Resources\Channel('CHANNEL_ID');
+$channel =  new TubeCode\Resources\Channel('CHANNEL_ID');
 
 $upload->to($channel);
 ```
@@ -134,11 +134,11 @@ or to many channels
 
 ```php
 $channels = [
-    new Pascal\Resources\Channel('CHANNEL_ID_1');
-    new Pascal\Resources\Channel('CHANNEL_ID_2');
-    new Pascal\Resources\Channel('CHANNEL_ID_3');
-    new Pascal\Resources\Channel('CHANNEL_ID_4');
-    new Pascal\Resources\Channel('CHANNEL_ID_5');
+    new TubeCode\Resources\Channel('CHANNEL_ID_1');
+    new TubeCode\Resources\Channel('CHANNEL_ID_2');
+    new TubeCode\Resources\Channel('CHANNEL_ID_3');
+    new TubeCode\Resources\Channel('CHANNEL_ID_4');
+    new TubeCode\Resources\Channel('CHANNEL_ID_5');
 ];
 
 $upload->to($channels);

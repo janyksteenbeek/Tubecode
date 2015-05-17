@@ -1,6 +1,6 @@
 {
-    "name": "pascal/youtube-api-helper",
-    "description": "A few Helpers to interact with the YouTube APIs",
+    "name": "pascal/tubecode",
+    "description": "TubeCode - YouTube API Client for PHP",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -15,7 +15,7 @@
     "autoload": {
         "files": ["src/YouTubePartner.php"],
         "psr-0": {
-            "Pascal": "src/"
+            "Tubecode": "src/"
         }
     }
 }

@@ -1,13 +1,13 @@
-<?php namespace Pascal\YouTube;
+<?php namespace Tubecode\YouTube;
 
 use Google_Http_MediaFileUpload;
 use Google_Service_YouTube_Video;
 use Google_Service_YouTube_VideoSnippet;
 use Google_Service_YouTube_VideoStatus;
-use Pascal\Exceptions\InvalidChannelException;
-use Pascal\Resources\Channel;
-use Pascal\Resources\Config;
-use Pascal\Resources\UploadableFile;
+use Tubecode\Exceptions\InvalidChannelException;
+use Tubecode\Resources\Channel;
+use Tubecode\Resources\Config;
+use Tubecode\Resources\UploadableFile;
 
 class VideoUploader {
 
@@ -20,7 +20,7 @@ class VideoUploader {
     protected $recipient = [];
 
     /**
-     * @class Pascal\YouTube\Api
+     * @class Tubecode\YouTube\Api
      */
     private $api;
 

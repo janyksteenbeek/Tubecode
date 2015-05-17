@@ -1,11 +1,11 @@
-<?php namespace Pascal\YouTube;
+<?php namespace Tubecode\YouTube;
 
 use Google_Client;
 use Google_Service_YouTube;
 use Google_Service_YouTubePartner;
-use Pascal\Resources\Config;
-use Pascal\Resources\ContentOwner;
-use Pascal\Resources\UploadableFile;
+use Tubecode\Resources\Config;
+use Tubecode\Resources\ContentOwner;
+use Tubecode\Resources\UploadableFile;
 
 class Api {
 

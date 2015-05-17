@@ -1,6 +1,6 @@
-<?php namespace Pascal\Resources\Config;
+<?php namespace Tubecode\Resources\Config;
 
-use Pascal\Resources\Config;
+use Tubecode\Resources\Config;
 
 class VideoUploadConfig extends Config {
 

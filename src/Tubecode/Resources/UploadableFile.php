@@ -1,4 +1,4 @@
-<?php namespace Pascal\Resources;
+<?php namespace Tubecode\Resources;
 
 
 class UploadableFile extends \SplFileInfo{

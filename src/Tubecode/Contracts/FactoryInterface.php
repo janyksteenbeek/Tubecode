@@ -1,7 +1,7 @@
-<?php namespace Pascal\Contracts;
+<?php namespace Tubecode\Contracts;
 
 
-use Pascal\Resources\ContentOwner;
+use Tubecode\Resources\ContentOwner;
 
 interface FactoryInterface {
 
@@ -12,7 +12,7 @@ interface FactoryInterface {
      * @param              $service_account_name
      * @param              $key_file
      *
-     * @return Pascal\YouTube\Api
+     * @return Tubecode\YouTube\Api
      */
     public static function create(ContentOwner $content_owner, $service_account_name, $key_file);
 }

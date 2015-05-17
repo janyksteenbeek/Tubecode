@@ -1,12 +1,12 @@
-<?php namespace Pascal\YouTube;
+<?php namespace Tubecode\YouTube;
 
 
 use Google_Auth_AssertionCredentials;
 use Google_Client;
 use Google_Service_YouTube;
 use Google_Service_YouTubePartner;
-use Pascal\Contracts\FactoryInterface;
-use Pascal\Resources\ContentOwner;
+use Tubecode\Contracts\FactoryInterface;
+use Tubecode\Resources\ContentOwner;
 
 class Factory implements FactoryInterface {
 
