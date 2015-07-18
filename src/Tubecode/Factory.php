@@ -2,23 +2,19 @@
 
 
 use Google_Auth_AssertionCredentials;
-use Google_Client;
-use Google_Service_YouTube;
-use Google_Service_YouTubePartner;
+
 use Tubecode\Contracts\FactoryInterface;
-use Tubecode\Resources\ContentOwner;
 
 class Factory implements FactoryInterface {
 
-    public static function create(ContentOwner $content_owner, $service_account_name, $key_file)
+    public static function create($service_account_name, $key_file, $content_owner_id = null)
     {
-        $client = new Google_Client();
-        self::authorize_service_account($client, $service_account_name, $key_file);
 
-        $youtube = new Google_Service_YouTube($client);
-        $partner = new Google_Service_YouTubePartner($client);
+    }
 
-        return new Api($client, $youtube, $partner, $content_owner);
+    public static function createFromToken($access_key, $refresh_key = null)
+    {
+
     }
 
     private static function authorize_service_account($client, $service_account_name, $key_file)
@@ -35,4 +31,10 @@ class Factory implements FactoryInterface {
             $client->getAuth()->refreshTokenWithAssertion($cred);
         }
     }
+
+
+    /*
+     * Account::createFromToken('access_token', 'refresh_token') //Is a YouTube Channel
+     * Account::create('service_account_name', 'key_file') //Is a Content Owner
+     */
 }
