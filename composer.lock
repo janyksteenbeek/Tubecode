@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "049383bcd0354b53a483e208ccfac7df",
+    "hash": "b28c4a6f68d2b0daaf6a9c2e678231f6",
     "packages": [
         {
             "name": "google/apiclient",
-            "version": "1.1.2",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client.git",
-                "reference": "9c35bbbbaf04a5236d763560dab1e2f6e672a724"
+                "reference": "2adb5ba90612858d4add0342eee6b8b9aaca398d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/9c35bbbbaf04a5236d763560dab1e2f6e672a724",
-                "reference": "9c35bbbbaf04a5236d763560dab1e2f6e672a724",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/2adb5ba90612858d4add0342eee6b8b9aaca398d",
+                "reference": "2adb5ba90612858d4add0342eee6b8b9aaca398d",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2014-11-25 14:35:03"
+            "time": "2015-05-21 19:35:32"
         }
     ],
     "packages-dev": [],

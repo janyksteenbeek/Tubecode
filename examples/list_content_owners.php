@@ -1,17 +1,11 @@
 <?php
 
-DEFINE("OAUTH2_SERVICE_ACCOUNT_NAME", 	'YOUR GOOGLE SERVICE ACCOUNT');
-DEFINE("OAUTH2_KEY_FILE", 				__DIR__.'/storage/key.p12');
-DEFINE("CONTENT_OWNER",					'YOUR CONTENT OWNER ID');
+require_once "../vendor/autoload.php";
 
+$service_account = file_get_contents('service_account.json');
 
-//Prepare the Google Client
-$client = new Google_Client();
-Pascal\YouTubeApiHelper::authorize_service_account($client,OAUTH2_SERVICE_ACCOUNT_NAME,OAUTH2_KEY_FILE);
-$partner = new Google_Service_YouTubePartner($client);
+$contentOwners = \Tubecode\Factory::create($service_account);
 
-//List all Content Owners
-$list = Pascal\YouTubeApiHelper::list_content_owners($partner);
-foreach($list as $co) {
-    echo "Content owner {$co->getDisplayName()} ({$co->getId()})\n";
+foreach($contentOwners->all() as $contentOwner) {
+    echo "Content owner {$contentOwner->getDisplayName()} ({$contentOwner->getId()})\n";
 }

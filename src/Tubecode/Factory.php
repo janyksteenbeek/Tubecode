@@ -1,15 +1,24 @@
-<?php namespace Tubecode\YouTube;
+<?php
 
+namespace Tubecode;
 
 use Google_Auth_AssertionCredentials;
-
+use Google_Client;
+use Tubecode\Collections\ContentOwners;
 use Tubecode\Contracts\FactoryInterface;
+use Tubecode\Exceptions\invalidJsonCredentialsType;
 
-class Factory implements FactoryInterface {
+class Factory implements FactoryInterface
+{
+    private static $SERVICE_ACCOUNT_TYPE = "service_account";
 
-    public static function create($service_account_name, $key_file, $content_owner_id = null)
+    public static function create($service_account_json_cred, $scopes = [], $content_owner_id = null)
     {
+        $client = new Google_Client();
 
+        $client = self::authorize_service_account($service_account_json_cred, $client, $scopes);
+
+        return new ContentOwners($client, $content_owner_id);
     }
 
     public static function createFromToken($access_key, $refresh_key = null)
@@ -17,24 +26,29 @@ class Factory implements FactoryInterface {
 
     }
 
-    private static function authorize_service_account($client, $service_account_name, $key_file)
+    private static function authorize_service_account($service_account_json_cred, Google_Client $client, $scopes = [])
     {
-        $key = file_get_contents($key_file);
+        $service_account_cred = json_decode($service_account_json_cred, true);
+
+        if($service_account_cred['type'] != self::$SERVICE_ACCOUNT_TYPE)
+        {
+            throw new invalidJsonCredentialsType();
+        }
+
+        $scopes = array_merge($scopes, ['https://www.googleapis.com/auth/youtubepartner']);
+
         $cred = new Google_Auth_AssertionCredentials(
-            $service_account_name,
-            ['https://www.googleapis.com/auth/youtubepartner'],
-            $key);
+            $service_account_cred['client_email'],
+            $scopes,
+            $service_account_cred['private_key']);
+
         $client->setAssertionCredentials($cred);
 
         if($client->getAuth()->isAccessTokenExpired())
         {
             $client->getAuth()->refreshTokenWithAssertion($cred);
         }
+
+        return $client;
     }
-
-
-    /*
-     * Account::createFromToken('access_token', 'refresh_token') //Is a YouTube Channel
-     * Account::create('service_account_name', 'key_file') //Is a Content Owner
-     */
 }
