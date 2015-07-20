@@ -1,8 +1,8 @@
 <?php
 
-require_once "../vendor/autoload.php";
+require_once __DIR__ . "/../vendor/autoload.php";
 
-$service_account = file_get_contents('service_account.json');
+$service_account = file_get_contents(__DIR__ . '/service_account.json');
 
 $contentOwners = \Tubecode\Factory::create($service_account);
 
