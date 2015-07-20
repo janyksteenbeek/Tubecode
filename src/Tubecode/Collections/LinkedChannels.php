@@ -6,7 +6,7 @@ use Tubecode\ContentOwner;
 use Tubecode\Contracts\ContentOwnerInterface;
 use Tubecode\Models\Channel;
 
-class PartneredChannels
+class LinkedChannels
 {
     private $channels = [];
 
