@@ -2,7 +2,7 @@
 
 namespace Tubecode\Collections;
 
-use Tubecode\ContentOwner;
+use Tubecode\Models\ContentOwner;
 use Tubecode\Contracts\ContentOwnerInterface;
 use Tubecode\Models\Channel;
 

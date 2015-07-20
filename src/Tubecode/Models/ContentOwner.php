@@ -1,6 +1,6 @@
 <?php
 
-namespace Tubecode;
+namespace Tubecode\Models;
 
 use Tubecode\Collections\LinkedChannels;
 use Tubecode\Contracts\ContentOwnerInterface;
