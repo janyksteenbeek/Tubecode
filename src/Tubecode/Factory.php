@@ -18,7 +18,7 @@ class Factory implements FactoryInterface
 
         $client = self::authorize_service_account($service_account_json_cred, $client, $scopes);
 
-        return new ContentOwners($client, $content_owner_id);
+        return ContentOwners::create($client, $content_owner_id);
     }
 
     public static function createFromToken($access_key, $refresh_key = null)

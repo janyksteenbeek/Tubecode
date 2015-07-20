@@ -20,22 +20,34 @@ class ContentOwners
 
     /**
      * @param \Google_Client $client
-     * @param null|string    $content_owner_id
+     * @param null           $content_owner_id
+     *
+     * @return ContentOwners|ContentOwnerInterface
      */
-    public function __construct(\Google_Client $client, $content_owner_id = null)
+    public static function create(\Google_Client $client, $content_owner_id = null)
+    {
+        $partner = new \Google_Service_YouTubePartner($client);
+
+        if(is_null($content_owner_id))
+        {
+            return new ContentOwners($client);
+        }
+
+        $response = $partner->contentOwners->listContentOwners(['id' => $content_owner_id]);
+
+        return self::createContentOwnerInstance($response['items'][0], $client);
+    }
+
+    /**
+     * @param \Google_Client $client
+     */
+    public function __construct(\Google_Client $client)
     {
         $this->client = $client;
 
         $partner = new \Google_Service_YouTubePartner($this->client);
 
-        if(is_null($content_owner_id))
-        {
-            $this->loadInitialContentOwners($partner);
-        } else {
-            return $this->loadContentOwner($partner);
-        }
-
-        return $this;
+        $this->loadInitialContentOwners($partner);
     }
 
     /**
@@ -63,20 +75,8 @@ class ContentOwners
 
         foreach($response->getItems() as $contentOwner)
         {
-            $this->contentOwner[$contentOwner['id']] = $this->createContentOwnerInstance($contentOwner);
+            $this->contentOwner[$contentOwner->getId()] = $this->createContentOwner($contentOwner);
         }
-    }
-
-    /**
-     * @param \Google_Service_YouTubePartner $partner
-     *
-     * @return ContentOwnerInterface
-     */
-    private function loadContentOwner(\Google_Service_YouTubePartner $partner)
-    {
-        $response = $partner->contentOwners->listContentOwners(['id' => $content_owner_id, 'fetchMine' => true]);
-
-        return $this->createContentOwnerInstance($response['items'][0]);
     }
 
     /**
@@ -84,8 +84,18 @@ class ContentOwners
      *
      * @return ContentOwnerInterface
      */
-    private function createContentOwnerInstance($contentOwner)
+    private function createContentOwner(\Google_Service_YouTubePartner_ContentOwner $contentOwner)
     {
-        return new ContentOwner($contentOwner, $this->client);
+        return self::createContentOwnerInstance($contentOwner, $this->client);
+    }
+
+    /**
+     * @param $contentOwner
+     *
+     * @return ContentOwnerInterface
+     */
+    private static function createContentOwnerInstance(\Google_Service_YouTubePartner_ContentOwner $contentOwner, \Google_Client $client)
+    {
+        return new ContentOwner($contentOwner, $client);
     }
 }

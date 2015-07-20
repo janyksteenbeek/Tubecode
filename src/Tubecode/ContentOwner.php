@@ -2,6 +2,7 @@
 
 namespace Tubecode;
 
+use Tubecode\Collections\PartneredChannels;
 use Tubecode\Contracts\ContentOwnerInterface;
 
 class ContentOwner implements ContentOwnerInterface
@@ -56,6 +57,11 @@ class ContentOwner implements ContentOwnerInterface
     public function getPrimaryNotificationEmails()
     {
         return $this->primaryNotificationEmails;
+    }
+
+    public function partneredChannels()
+    {
+        return new PartneredChannels($this->client, $this);
     }
 
     /**
