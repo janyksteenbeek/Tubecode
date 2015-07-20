@@ -51,6 +51,7 @@ class ContentOwners
     }
 
     /**
+     * @param null $id
      * @return ContentOwnerInterface
      */
     public function get($id = null)
